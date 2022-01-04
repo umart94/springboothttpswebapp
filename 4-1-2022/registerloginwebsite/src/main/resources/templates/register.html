@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<section>
+	
+	
+	<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">Create Account</h4>
+	<p class="text-center">Get started with your free account</p>
+	
+	
+	<form th:action="@{/registeruser}" method="POST" th:object="${registrationUser}">
+	<div class="form-group input-group">
+		<div class="input-group-prepend">
+		    
+		 </div>
+        
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input name="" class="form-control" placeholder="Username" type="text" th:id="username" th:name="username" th:field="*{username}">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		  </div>
+		
+    	
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		     
+		</div>
+		
+	</div> <!-- form-group end.// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input class="form-control" placeholder="Create password" type="password">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input class="form-control" placeholder="Repeat password" type="password" th:id="password" th:name="password" th:field="*{password}">
+    </div> <!-- form-group// -->                                      
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+    </div> <!-- form-group// -->      
+    <p class="text-center">Have an account? <a th:href="@{/login}">Log In</a> </p>                                                                 
+</form>
+<div th:if="${session.registrationSuccessMessage}" th:text="${session.registrationSuccessMessage}" class="alert alert-success"></div>
+<th:block th:if="${session.registrationSuccessMessage}" th:text="${#session.removeAttribute('registrationSuccessMessage')}"></th:block>
+<div th:if="${session.registrationErrorMessage}" th:text="${session.registrationErrorMessage}" class="alert alert-danger"></div>
+<th:block th:if="${session.registrationErrorMessage}" th:text="${#session.removeAttribute('registrationErrorMessage')}"></th:block>
+<div th:if="${session.registerErrors}">
+<div th:each="error: ${session.registerErrors}">
+<!-- <div th:text="${error.getDefaultMessage()}" class="alert alert-danger"></div> -->
+<div th:text="${error}" class="alert alert-danger"></div> 
+</div>
+<th:block th:if="${session.registerErrors}" th:text="${#session.removeAttribute('registerErrors')}"></th:block>
+</div>
+</article>
+</div> <!-- card.// -->
+
+ 
+	
+	</section>
+</body>
+</html>

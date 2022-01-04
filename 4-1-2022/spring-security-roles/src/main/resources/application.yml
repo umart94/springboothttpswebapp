@@ -1,0 +1,48 @@
+server:
+ port: 8443
+ 
+ ssl:
+    key-store-type: PKCS12
+    key-store: classpath:keystore/smartcontacts.p12
+    key-store-password: smartcontacts
+    key-alias: smartcontacts
+    enabled: true
+    trust-store: classpath:keystore/smartcontacts.p12
+    trust-store-password: smartcontacts
+
+
+
+
+debug: true
+
+jwt:
+  secret: javainuse
+  #expirationDateInMs: 900000 #15 minutes
+  expirationDateInMs: 0
+  refreshExpirationDateInMs: 900000
+ 
+spring:
+ datasource:
+  url: jdbc:mysql://localhost:3306/securejwt?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false&serverTimezone=Asia/Karachi
+  username: root
+  password: root
+  platform: mysql
+ 
+ jpa:
+    hibernate:
+      #ddl-auto: update
+      ddl-auto: create-drop
+ 
+springfox.documentation.swagger.v2.path: /docs
+
+swagger:
+  enabled: true 
+  
+api:
+  title: OPEN CONNECT API
+  description: REST Services for interacting with the exchange
+  version: 1.0
+  contact: 033333333
+  name: Paysys Labs
+  link: http://www.paysyslabs.com/
+  email: info@paysyslabs.com
