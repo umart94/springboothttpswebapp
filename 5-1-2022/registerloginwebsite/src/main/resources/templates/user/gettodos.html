@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="user/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<section>
+
+<table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">userId</th>
+      <th scope="col">id</th>
+      <th scope="col">title</th>
+      <th scope="col">completed</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr th:if="${session.listofFakeApiGetResponses.empty}">
+            <td colspan="2"> No Books Available </td>
+        </tr>
+    <tr th:each="response, iterstat: ${session.listofFakeApiGetResponses}">
+      
+      <td><span th:text="${response.userId}"></span></td>
+      <td><span th:text="${response.id}"></span></td>
+      <td><span th:text="${response.title}"></span></td>
+      <td><span th:text="${response.completed}"></span></td>
+    </tr>
+   
+  </tbody>
+</table>
+	
+	
+	
+	
+	
+	
+	
+	
+	</section>
+</body>
+</html>
